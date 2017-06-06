@@ -1,5 +1,6 @@
-#ifndef ITEM_HH
-#define ITEM_HH
+#ifndef BACKPACK_HH
+#define BACKPACK_HH
+#include <iostream>
 #include <vector>
 #include "item.hh"
 
@@ -13,15 +14,19 @@ class Backpack {
 
   public:
   Backpack() {
-    capacity = 0;
+    capacity = 15;
   }
 
-  ~Backpack();
+  Backpack(unsigned int cap) {
+    capacity = cap;
+  }
+
+  ~Backpack() {}
 
   int getCapacity();
   void add(Item newItem);
   void dispay();
   void cleanBackpack();
-}
+};
 
 #endif

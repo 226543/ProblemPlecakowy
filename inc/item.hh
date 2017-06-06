@@ -8,23 +8,29 @@ class Item {
   std::string name;
 
   // cena produktu
-  float price;
+  double weight;
 
   // zawartość alkoholu w mililitrach
-  double strength;
+  double value;
 
   public:
   Item();
-  ~Item();
+  Item(std::string nName, double nWeight, double nValue);
+  ~Item() {}
 
   std::string getName()const;
   void setName(std::string newName);
 
-  float getPrice()const;
-  void setPrice(float newPrice);
+  double getWeight()const;
+  void setWeight(double newWeight);
 
-  double getStrength()const;
-  void setStrength(double newStrength);
+  double getValue()const;
+  void setValue(double newValue);
+
+  // przeciążenie potrzebne do sortowania
+  inline bool operator < (const Item &rhs) const {
+    return (value/weight) < (rhs.getValue()/rhs.getWeight());
+  }
 };
 
 #endif

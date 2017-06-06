@@ -1,5 +1,11 @@
 #include <item.hh>
 
+Item::Item(std::string nName, double nWeight, double nValue) {
+  name = nName;
+  weight = nWeight;
+  value = nValue;
+}
+
 std::string Item::getName()const {
   return name;
 }
@@ -8,18 +14,18 @@ void Item::setName(std::string newName) {
   name = newName;
 }
 
-float Item::getPrice()const {
-  return price;
+double Item::getWeight()const {
+  return weight;
 }
 
-void Item::setPrice(float newPrice) {
-  price = newPrice;
+void Item::setWeight(double newWeight) {
+  weight = newWeight;
 }
 
-double Item::getStrength()const {
-  return strength;
+double Item::getValue()const {
+  return value;
 }
 
-void Item::setStrength(double newStrength) {
-  strength = newStrength;
+void Item::setValue(double newValue) {
+  value = newValue;
 }

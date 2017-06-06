@@ -1,4 +1,3 @@
-#include <iostream>
 #include "backpack.hh"
 
 int Backpack::getCapacity() {
@@ -16,11 +15,11 @@ void Backpack::dispay() {
 
   std::cout << "Nazwa produktu  Cena  Zawartość alkoholu [ml]" << std::endl;
 
-  for(auto i = element.begin(); i != element.end(); ++i) {
-    std::cout << i->getName() << " " << i->getPrice() << " "
-              << i->getStrength() << std::endl;
-    backpackWeight += i->getPrice();
-    backpackValue += i->getStrength();
+  for (const auto& i : element ){
+    std::cout << i.getName() << " " << i.getWeight() << " "
+              << i.getValue() << std::endl;
+    backpackWeight += i.getWeight();
+    backpackValue += i.getValue();
   }
 
   std::cout << std::endl << "Wydana kwota: " << backpackWeight << std::endl
@@ -28,5 +27,5 @@ void Backpack::dispay() {
 }
 
 void Backpack::cleanBackpack() {
-  element.erase();
+  element.clear();
 }
