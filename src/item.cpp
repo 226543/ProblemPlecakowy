@@ -14,7 +14,7 @@ void Item::setName(std::string newName) {
   name = newName;
 }
 
-double Item::getWeight()const {
+int Item::getWeight()const {
   return weight;
 }
 
@@ -28,4 +28,12 @@ double Item::getValue()const {
 
 void Item::setValue(double newValue) {
   value = newValue;
+}
+
+int Item::getOrder()const {
+  return order;
+}
+
+void Item::setOrder(int newOrder) {
+  order = newOrder;
 }

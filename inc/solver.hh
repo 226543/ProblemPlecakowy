@@ -8,6 +8,10 @@ class Solver {
   private:
   Shop zabka;
   int maxWeight;
+
+  int matrix[100][100];
+  int picks[100][100];
+
   public:
   Solver() {
     maxWeight = 10;
@@ -18,5 +22,12 @@ class Solver {
 
   void preferences(bool beer, bool vine, bool hardLiquor);
   void approx();
+
+  void dynamicAlgoythm();
+  void setBackpack();
+  
+  int max(int val1, int val2);
+
+
 };
 #endif

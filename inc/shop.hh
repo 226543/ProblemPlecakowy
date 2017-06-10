@@ -23,6 +23,10 @@ class Shop {
   // wyświetla dostępne elementy
   void dispay();
   int getSize();
+
+  //nadaje indeksy kolejnym produktom
+  void setOrderInShop();
+
   Item& operator[] (unsigned int index);
 };
 

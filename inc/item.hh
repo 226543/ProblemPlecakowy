@@ -8,10 +8,13 @@ class Item {
   std::string name;
 
   // cena produktu
-  double weight;
+  int weight;
 
   // zawartość alkoholu w mililitrach
   double value;
+
+  //l. produktów
+  int order;
 
   public:
   Item();
@@ -21,11 +24,14 @@ class Item {
   std::string getName()const;
   void setName(std::string newName);
 
-  double getWeight()const;
+  int getWeight()const;
   void setWeight(double newWeight);
 
   double getValue()const;
   void setValue(double newValue);
+
+  int getOrder() const;
+  void setOrder(int newOrder);
 
   // przeciążenie potrzebne do sortowania
   inline bool operator < (const Item &rhs) const {

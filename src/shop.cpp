@@ -3,6 +3,7 @@
 void Shop::addItems(bool beer, bool vine, bool hardLiquor) {
   std::string temp;
   std::string name;
+
   double price = 0;
   double volume = 0;          //objętość
   double alcoholByVolume = 0;    //procentowa zawartość alkoholu
@@ -11,6 +12,7 @@ void Shop::addItems(bool beer, bool vine, bool hardLiquor) {
   std::ifstream file;
   if (beer) {
     file.open("piwa.csv");
+
 
     if(!file.is_open()) {
       std::cerr << "ERROR: File Open\n";
@@ -36,6 +38,8 @@ void Shop::addItems(bool beer, bool vine, bool hardLiquor) {
   if (vine) {
     file.open("wina.csv");
 
+    //order =0;
+
     if(!file.is_open()) {
       std::cerr << "ERROR: File Open\n";
       exit(EXIT_FAILURE);
@@ -44,6 +48,7 @@ void Shop::addItems(bool beer, bool vine, bool hardLiquor) {
     std::getline(file, temp,'\n');
 
     while(std::getline(file,temp,',')) {
+
       name = temp;
       std::getline(file,temp, ',');
       price = std::stod(temp);
@@ -60,6 +65,8 @@ void Shop::addItems(bool beer, bool vine, bool hardLiquor) {
   if (hardLiquor) {
     file.open("wysokoprocentowe.csv");
 
+    //order = 0;
+
     if(!file.is_open()) {
       std::cerr << "ERROR: File Open\n";
       exit(EXIT_FAILURE);
@@ -68,6 +75,7 @@ void Shop::addItems(bool beer, bool vine, bool hardLiquor) {
     std::getline(file, temp,'\n');
 
     while(std::getline(file,temp,',')) {
+
       name = temp;
       std::getline(file,temp, ',');
       price = std::stod(temp);
@@ -107,5 +115,14 @@ void Shop::dispay() {
   for (const auto& i : product ){
     std::cout << i.getName() << " " << i.getWeight() << " "
               << i.getValue() << std::endl;
+  }
+}
+
+void Shop::setOrderInShop()
+{
+  int tmp=1;
+  for ( auto& i : product ){
+     i.setOrder(tmp);
+    tmp++;
   }
 }
