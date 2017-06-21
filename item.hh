@@ -1,6 +1,7 @@
 #ifndef ITEM_HH
 #define ITEM_HH
 #include <string>
+#include <QString>
 
 class Item {
   private:
@@ -16,27 +17,41 @@ class Item {
   //l. produktów
   int order;
 
+  int id;
+
+  QString path;
+
   public:
-  Item();
-  Item(std::string nName, double nWeight, double nValue);
+  Item(std::string nName, double nWeight, double nValue, int nID);
   ~Item() {}
 
   std::string getName()const;
   void setName(std::string newName);
 
   int getWeight()const;
-  void setWeight(double newWeight);
+  void setWeight(int newWeight);
 
   double getValue()const;
   void setValue(double newValue);
 
-  int getOrder() const;
+  int getOrder()const;
   void setOrder(int newOrder);
+
+  int getID();
 
   // przeciążenie potrzebne do sortowania
   inline bool operator < (const Item &rhs) const {
     return (value/weight) < (rhs.getValue()/rhs.getWeight());
   }
+
+  inline bool operator == (const Item &rhs) const {
+    return name == rhs.getName();
+  }
+
+  QString getPath()const;
+  void setPath(QString nPath);
+
+  void setIcon();
 };
 
 #endif

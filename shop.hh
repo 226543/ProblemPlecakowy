@@ -28,6 +28,7 @@ class Shop {
   void setOrderInShop();
 
   Item& operator[] (unsigned int index);
+  void setPathstoItems();
 };
 
 #endif

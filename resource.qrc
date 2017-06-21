@@ -1,0 +1,29 @@
+<RCC>
+    <qresource prefix="/iresource">
+        <file>img/tescovalue.jpg</file>
+        <file>img/pinta.jpg</file>
+        <file>img/shandy.jpg</file>
+        <file>img/brew.jpg</file>
+        <file>img/karpackie.jpg</file>
+        <file>img/perla.png</file>
+        <file>img/haras.jpg</file>
+        <file>img/brak.jpg</file>
+        <file>img/namyslow.jpg</file>
+        <file>img/wybrano.jpg</file>
+        <file>img/smirnoff.jpg</file>
+        <file>img/luksusowa.jpg</file>
+        <file>img/zywiec.png</file>
+        <file>img/zoladkowa.jpg</file>
+        <file>img/lubuska.jpg</file>
+        <file>img/bison.jpg</file>
+        <file>img/spiryt.jpg</file>
+        <file>img/pantad.png</file>
+        <file>img/zubrowkaBiała.jpg</file>
+        <file>img/soplicaSzlachetna.jpg</file>
+        <file>img/krupnik.jpg</file>
+        <file>img/okocim.jpg</file>
+        <file>img/piwa.csv</file>
+        <file>img/wina.csv</file>
+        <file>img/wysokoprocentowe.csv</file>
+    </qresource>
+</RCC>

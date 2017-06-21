@@ -1,42 +1,56 @@
 #include "shop.hh"
+#include <QFile>
+#include <iostream>
+#include <QString>
+#include <QMap>
 
 void Shop::addItems(bool beer, bool vine, bool hardLiquor) {
   std::string temp;
   std::string name;
 
-  double price = 0;
+  int price = 0;
   double volume = 0;          //objętość
   double alcoholByVolume = 0;    //procentowa zawartość alkoholu
   double amountOfAlcohol = 0;   // ilość alkoholu w mililitrach
+  int id = 0;
 
   std::ifstream file;
-  if (beer) {
-    file.open("piwa.csv");
+  std::setlocale(LC_ALL, "C"); // ustawienia regionalne (kropka,przecinek)
+  // qt ustawia jako separator dziesietny przecinek
 
+  if (beer) {
+    file.open("/home/tomasz/dd/projektt/piwa.csv");
 
     if(!file.is_open()) {
       std::cerr << "ERROR: File Open\n";
       exit(EXIT_FAILURE);
     }
-    // pobiera pierwszą linię z opisem kolumn
+
     std::getline(file, temp,'\n');
 
     while(std::getline(file,temp,',')) {
       name = temp;
+
       std::getline(file,temp, ',');
-      price = std::stod(temp);
+      price = 100*std::stod(temp);
+
       std::getline(file, temp, ',');
       volume = std::stod(temp);
-      std::getline(file, temp,'\n');
+
+      std::getline(file, temp, ',');
       alcoholByVolume = std::stod(temp);
       amountOfAlcohol = 10*volume*alcoholByVolume;  // przeliczanie ilości alkoholu na mililitry
-		  product.push_back( Item(name,price,amountOfAlcohol) );
+
+      std::getline(file, temp,'\n');
+      id = std::stoi(temp);
+
+      product.push_back( Item(name,price,amountOfAlcohol,id) );
     }
     file.close();
   }
 
   if (vine) {
-    file.open("wina.csv");
+    file.open("/home/tomasz/dd/projektt/wina.csv");
 
     //order =0;
 
@@ -48,24 +62,29 @@ void Shop::addItems(bool beer, bool vine, bool hardLiquor) {
     std::getline(file, temp,'\n');
 
     while(std::getline(file,temp,',')) {
+        name = temp;
 
-      name = temp;
-      std::getline(file,temp, ',');
-      price = std::stod(temp);
-      std::getline(file, temp, ',');
-      volume = std::stod(temp);
-      std::getline(file, temp,'\n');
-      alcoholByVolume = std::stod(temp);
-      amountOfAlcohol = 10*volume*alcoholByVolume;
-      product.push_back( Item(name,price,amountOfAlcohol) );
-    }
-    file.close();
+        std::getline(file,temp, ',');
+        price = 100*std::stod(temp);
+
+        std::getline(file, temp, ',');
+        volume = std::stod(temp);
+
+        std::getline(file, temp, ',');
+        alcoholByVolume = std::stod(temp);
+        amountOfAlcohol = 10*volume*alcoholByVolume;  // przeliczanie ilości alkoholu na mililitry
+
+        std::getline(file, temp,'\n');
+        id = std::stoi(temp);
+
+        product.push_back( Item(name,price,amountOfAlcohol,id) );
+      }
+      file.close();
   }
 
   if (hardLiquor) {
-    file.open("wysokoprocentowe.csv");
+    file.open("/home/tomasz/dd/projektt/wysokoprocentowe.csv");
 
-    //order = 0;
 
     if(!file.is_open()) {
       std::cerr << "ERROR: File Open\n";
@@ -75,18 +94,24 @@ void Shop::addItems(bool beer, bool vine, bool hardLiquor) {
     std::getline(file, temp,'\n');
 
     while(std::getline(file,temp,',')) {
+        name = temp;
 
-      name = temp;
-      std::getline(file,temp, ',');
-      price = std::stod(temp);
-      std::getline(file, temp, ',');
-      volume = std::stod(temp);
-      std::getline(file, temp,'\n');
-      alcoholByVolume = std::stod(temp);
-      amountOfAlcohol = 10*volume*alcoholByVolume;
-      product.push_back( Item(name,price,amountOfAlcohol) );
-    }
-    file.close();
+        std::getline(file,temp, ',');
+        price = 100*std::stod(temp);
+
+        std::getline(file, temp, ',');
+        volume = std::stod(temp);
+
+        std::getline(file, temp, ',');
+        alcoholByVolume = std::stod(temp);
+        amountOfAlcohol = 10*volume*alcoholByVolume;  // przeliczanie ilości alkoholu na mililitry
+
+        std::getline(file, temp,'\n');
+        id = std::stoi(temp);
+
+        product.push_back( Item(name,price,amountOfAlcohol,id) );
+      }
+      file.close();
   }
 }
 
@@ -113,16 +138,18 @@ void Shop::dispay() {
   std::cout << "Nazwa produktu  Cena  Zawartość alkoholu [ml]" << std::endl;
 
   for (const auto& i : product ){
-    std::cout << i.getName() << " " << i.getWeight() << " "
+    std::cout << i.getName() << " " << i.getWeight()/100.0 << " "
               << i.getValue() << std::endl;
   }
 }
 
 void Shop::setOrderInShop()
 {
-  int tmp=1;
+  int tmp = 1;
   for ( auto& i : product ){
-     i.setOrder(tmp);
-    tmp++;
+    i.setOrder(tmp);
+    ++tmp;
   }
 }
+
+
