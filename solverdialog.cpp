@@ -72,16 +72,16 @@ void SolverDialog::on_pushButton_2_clicked()
         return;
     }
 
-    QStringList header;
-    header <<"Nazwa"<<"Zdjecie"<<"Cena" << "ml/zł";
-    ui->tableWidget->setHorizontalHeaderLabels(header);
-
     QHeaderView *verticalHeader = ui->tableWidget->verticalHeader();
     verticalHeader->setSectionResizeMode(QHeaderView::Fixed);
     verticalHeader->setDefaultSectionSize(90);
 
     ui->tableWidget->setColumnCount(4);
     ui->tableWidget->setRowCount(bag.getCapacity());
+
+    QStringList header;
+    header <<"Nazwa"<<"Zdjecie"<<"Cena" << "ml/zł";
+    ui->tableWidget->setHorizontalHeaderLabels(header);
 
     double kwota = 0;
     double alko = 0;
