@@ -61,7 +61,7 @@ void Backpack::addItems(bool beer, bool vine, bool hardLiquor) {
   // qt ustawia jako separator dziesietny przecinek
 
   if (beer) {
-    file.open("/home/tomasz/dd/projektt/piwa.csv");
+    file.open("/home/tomasz/ProblemPlecakowy/piwa.csv");
 
 
     if(!file.is_open()) {
@@ -93,7 +93,7 @@ void Backpack::addItems(bool beer, bool vine, bool hardLiquor) {
   }
 
   if (vine) {
-    file.open("/home/tomasz/dd/projektt/wina.csv");
+    file.open("/home/tomasz/ProblemPlecakowy/wina.csv");
 
 
     if(!file.is_open()) {
@@ -125,7 +125,7 @@ void Backpack::addItems(bool beer, bool vine, bool hardLiquor) {
   }
 
   if (hardLiquor) {
-    file.open("/home/tomasz/dd/projektt/wysokoprocentowe.csv");
+    file.open("/home/tomasz/ProblemPlecakowy/wysokoprocentowe.csv");
 
 
     if(!file.is_open()) {
