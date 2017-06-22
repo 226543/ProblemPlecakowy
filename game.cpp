@@ -199,6 +199,7 @@ void Game::on_tableWidget_cellClicked(int row,int column)
             ui->tableWidget->setItem(0, column, pic);
         }
     }
+    ui->label_6->setText(QString::number(checkWeightOfBackpack()));
 }
 
 void Game::clearGame()
@@ -213,6 +214,7 @@ void Game::clearGame()
         ui->tableWidget->setItem(0, i, pic);
     }
     ui->tableWidget_2->clear();
+    ui->label_6->setText(QString::number(0));
 }
 
 
